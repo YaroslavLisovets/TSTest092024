@@ -72,13 +72,13 @@ This event is emitted when a new shape is created.
 
 #### Example
 ```ts
-import { Rectangle } from './src/shapes/Rectangle';
+import {Rectangle} from './src/shapes/Rectangle';
 
 const rect = new Rectangle(10, 5);
 
-rect.addEventListener('shapeCreated', (e) => {
-    console.log(e.detail.shapeType);  // Output: Rectangle
-});
+c.addEventListener('shapeCreated', ((e: CustomEvent) => {
+  console.log('Shape created:', e.detail.shapeType);
+}) as EventListener);
 ```
 
 ### ShapeUpdated
@@ -90,8 +90,8 @@ import { Rectangle } from './src/shapes/Rectangle';
 
 const rect = new Rectangle(10, 5);
 
-c.addEventListener('shapeCreated', ((e: CustomEvent) => {
-  console.log('Shape created:', e.detail.shapeType);
+c.addEventListener('shapeUpdated', ((e: CustomEvent) => {
+  console.log('Shape updated:', e.detail.shapeType);
 }) as EventListener);
 
 rect.update(20, 10);
